@@ -20,11 +20,11 @@ public class AutomationPracticeForm {
         Configuration.browserSize = "1920x1080";
         Configuration.baseUrl = "https://demoqa.com";
         Configuration.pageLoadStrategy = "eager";
-        Configuration.holdBrowserOpen = true;
+        //Configuration.holdBrowserOpen = true;
     }
 
     @Test
-    public void AllFildsOfFormTest(){
+    public void allFildsOfFormTest(){
         open("/automation-practice-form");
         $("#firstName").setValue("Murka");
         $("#lastName").setValue("Barsikovna");
@@ -32,12 +32,12 @@ public class AutomationPracticeForm {
         $("#userNumber").setValue("9866509834");
         $("#subjectsInput").setValue("Hello World");
         $("#currentAddress").setValue("Russia, Kirov");
-        $x("//*[@id=\"genterWrapper\"]/div[2]/div[1]/label").click();
+        $("#genterWrapper").$(byText("Male")).click();
         $("#subjectsInput").setValue("Maths");
         SelenideElement inputField = Selenide.$("#subjectsInput");
         inputField.pressEnter();
-        $x("//*[@id=\"hobbiesWrapper\"]/div[2]/div[2]/label").click();
-        $x("//*[@id=\"hobbiesWrapper\"]/div[2]/div[1]/label").click();
+        $("#hobbiesWrapper").$(byText("Reading")).click();
+        $("#hobbiesWrapper").$(byText("Sports")).click();
 
         //Календарь
         $("#dateOfBirthInput").click();
@@ -46,13 +46,13 @@ public class AutomationPracticeForm {
         $$(".react-datepicker__day").findBy(text("12")).click();
 
         //Загрузка файлов
-        $("input#uploadPicture").uploadFile(new File("src/test/data/file.PNG"));
+        $("#uploadPicture").uploadFromClasspath("file.PNG");;
 
         //Выбор страны/города
-        $x("//*[@id=\"state\"]/div").click();
-        $("#react-select-3-option-0").click();
-        $x("//*[@id=\"city\"]").click();
-        $("#react-select-4-option-1").click();
+        $("#state").click();
+        $("#react-select-3-input").setValue("NCR").pressEnter();
+        $("#city").click();
+        $("#react-select-4-input").setValue("Gurgaon").pressEnter();
 
         $("#submit").click();
 
