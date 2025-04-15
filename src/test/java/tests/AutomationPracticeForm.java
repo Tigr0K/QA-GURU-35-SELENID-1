@@ -30,12 +30,9 @@ public class AutomationPracticeForm {
         $("#lastName").setValue("Barsikovna");
         $("#userEmail").setValue("murka.barsikovna@gmail.com");
         $("#userNumber").setValue("9866509834");
-        $("#subjectsInput").setValue("Hello World");
         $("#currentAddress").setValue("Russia, Kirov");
         $("#genterWrapper").$(byText("Male")).click();
-        $("#subjectsInput").setValue("Maths");
-        SelenideElement inputField = Selenide.$("#subjectsInput");
-        inputField.pressEnter();
+        $("#subjectsInput").setValue("Maths").pressEnter();
         $("#hobbiesWrapper").$(byText("Reading")).click();
         $("#hobbiesWrapper").$(byText("Sports")).click();
 
