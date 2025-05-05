@@ -2,6 +2,7 @@ package tests;
 
 import com.codeborne.selenide.Configuration;
 import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import pages.components.SubmitTableComponent;
 import pages.registrationPage;
@@ -18,6 +19,7 @@ public class AutomationPracticeFormPageObjexctsTests extends testBase{
     SubmitTableComponent STC = new SubmitTableComponent();
 
     @Test
+    @DisplayName("Позитивный все поля")
     public void allFildsOfFormTest(){
         RP.openPage()
                 .setFirstName("Murka")
@@ -43,8 +45,35 @@ public class AutomationPracticeFormPageObjexctsTests extends testBase{
                 .addCheck("Hobbies", "Reading")
                 .addCheck("Address", "Russia, Kirov")
                 .addCheck("State and City","NCR Gurgaon");
+    }
 
+    @Test
+    @DisplayName("Позитивный обязательные поля")
+    public void minFildsOfFormTest() {
+        RP.openPage()
+                .setFirstName("Murka")
+                .setLastName("Barsikovna")
+                .setGender("Male")
+                .setUserNumber("9866509834")
+                .clickSubmitBtn();
 
+        //Проверки
+        STC.addCheck("Student Name", "Murka Barsikovna")
+                .addCheck("Gender", "Male")
+                .addCheck("Mobile", "9866509834");
+    }
+
+    @Test
+    @DisplayName("Нет номера телефона")
+    public void noNumberFildsOfFormTest() {
+        RP.openPage()
+                .setFirstName("Murka")
+                .setLastName("Barsikovna")
+                .setGender("Male")
+                .clickSubmitBtn();
+
+        //Проверки
+        STC.isNotSubmitted();
     }
 }
 
