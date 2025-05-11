@@ -1,27 +1,21 @@
 package tests;
 
-import com.codeborne.selenide.Configuration;
-import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import pages.components.SubmitTableComponent;
-import pages.registrationPage;
-
-import static com.codeborne.selenide.Condition.text;
-import static com.codeborne.selenide.Selectors.byText;
-import static com.codeborne.selenide.Selenide.*;
-
+import pages.RegistrationPage;
 
 
 public class AutomationPracticeFormPageObjexctsTests extends testBase{
 
-    registrationPage RP = new registrationPage();
-    SubmitTableComponent STC = new SubmitTableComponent();
+    RegistrationPage registrationPage = new RegistrationPage();
+    SubmitTableComponent submitTableComponent = new SubmitTableComponent();
 
     @Test
     @DisplayName("Позитивный все поля")
     public void allFildsOfFormTest(){
-        RP.openPage()
+        registrationPage.openPage()
+                .removeBanner()
                 .setFirstName("Murka")
                 .setLastName("Barsikovna")
                 .setUserEmail("murka.barsikovna@gmail.com")
@@ -36,7 +30,7 @@ public class AutomationPracticeFormPageObjexctsTests extends testBase{
                 .clickSubmitBtn();
 
         //Проверки
-        STC.addCheck("Student Name","Murka Barsikovna")
+        submitTableComponent.addCheck("Student Name","Murka Barsikovna")
                 .addCheck("Student Email", "murka.barsikovna@gmail.com")
                 .addCheck("Gender", "Male")
                 .addCheck("Mobile", "9866509834")
@@ -50,7 +44,7 @@ public class AutomationPracticeFormPageObjexctsTests extends testBase{
     @Test
     @DisplayName("Позитивный обязательные поля")
     public void minFildsOfFormTest() {
-        RP.openPage()
+        registrationPage.openPage()
                 .setFirstName("Murka")
                 .setLastName("Barsikovna")
                 .setGender("Male")
@@ -58,7 +52,7 @@ public class AutomationPracticeFormPageObjexctsTests extends testBase{
                 .clickSubmitBtn();
 
         //Проверки
-        STC.addCheck("Student Name", "Murka Barsikovna")
+        submitTableComponent.addCheck("Student Name", "Murka Barsikovna")
                 .addCheck("Gender", "Male")
                 .addCheck("Mobile", "9866509834");
     }
@@ -66,14 +60,14 @@ public class AutomationPracticeFormPageObjexctsTests extends testBase{
     @Test
     @DisplayName("Нет номера телефона")
     public void noNumberFildsOfFormTest() {
-        RP.openPage()
+        registrationPage.openPage()
                 .setFirstName("Murka")
                 .setLastName("Barsikovna")
                 .setGender("Male")
                 .clickSubmitBtn();
 
         //Проверки
-        STC.isNotSubmitted();
+        submitTableComponent.isNotSubmitted();
     }
 }
 

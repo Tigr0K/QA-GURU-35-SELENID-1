@@ -1,7 +1,5 @@
 package pages.components;
 
-import pages.registrationPage;
-
 import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.$$;
