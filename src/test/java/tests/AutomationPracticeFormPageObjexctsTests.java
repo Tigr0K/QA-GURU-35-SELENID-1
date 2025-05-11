@@ -45,6 +45,7 @@ public class AutomationPracticeFormPageObjexctsTests extends testBase{
     @DisplayName("Позитивный обязательные поля")
     public void minFildsOfFormTest() {
         registrationPage.openPage()
+                .removeBanner()
                 .setFirstName("Murka")
                 .setLastName("Barsikovna")
                 .setGender("Male")
@@ -61,6 +62,7 @@ public class AutomationPracticeFormPageObjexctsTests extends testBase{
     @DisplayName("Нет номера телефона")
     public void noNumberFildsOfFormTest() {
         registrationPage.openPage()
+                .removeBanner()
                 .setFirstName("Murka")
                 .setLastName("Barsikovna")
                 .setGender("Male")
