@@ -6,7 +6,7 @@ import pages.components.SubmitTableComponent;
 import pages.RegistrationPage;
 
 
-public class AutomationPracticeFormPageObjexctsTests extends testBase{
+public class AutomationPracticeFormPageObjexctsTests extends TestBase {
 
     RegistrationPage registrationPage = new RegistrationPage();
     SubmitTableComponent submitTableComponent = new SubmitTableComponent();
