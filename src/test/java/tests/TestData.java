@@ -1,35 +1,20 @@
 package tests;
 
-import com.github.javafaker.Faker;
-
-import java.util.Locale;
-
 public class TestData {
-    static Faker faker = new Faker(new Locale("en"));
-    public static String firstName = faker.name().firstName();
-    public static String lastName = faker.name().lastName();
-    public static String email = faker.internet().emailAddress();
-    public static String gender = faker.options().option("Male", "Female", "Other");
-    public static String subject = faker.options().option("Physics", "Commerce", "Chemistry", "Maths", "Arts", "Biology");
-    public static String number = faker.phoneNumber().subscriberNumber(10);
-    public static String hobby = faker.options().option("Sports", "Reading", "Music");
-    public static String day = String.valueOf(faker.number().numberBetween(1, 28));
-    public static String month = faker.options().option("January", "February", "March",
-            "April", "May", "June",
-            "July", "August", "September",
-            "October", "November", "December");
-    public static String year = String.valueOf(faker.number().numberBetween(1950, 2025));
-    public static String state = faker.options().option("NCR", "Uttar Pradesh", "Haryana", "Rajasthan");
-    public static String city = getRandomCity(state);
-    public static String address = faker.address().secondaryAddress();
+    static TestVar testVar = new TestVar();
+    public static String firstName = testVar.getFirstName();
+    public static String lastName = testVar.getLastName();
+    public static String email = testVar.getEmail();
+    public static String gender = testVar.getGender();
+    public static String subject = testVar.getSubject();
+    public static String number = testVar.getNumber();
+    public static String hobby = testVar.getHobby();
+    public static String day = testVar.getDay();
+    public static String month = testVar.getMonth();
+    public static String year = testVar.getYear();
+    public static String state = testVar.getState();
+    public static String city = testVar.getCity(state);
+    public static String address = testVar.getAddress();
 
-    public static String getRandomCity(String stateName) {
-        return switch (stateName) {
-            case "NCR" -> faker.options().option("Delhi", "Gurgaon", "Noida");
-            case "Uttar Pradesh" -> faker.options().option("Agra", "Lucknow", "Merrut");
-            case "Haryana" -> faker.options().option("Karnal", "Panipat");
-            case "Rajasthan" -> faker.options().option("Jaipur", "Jaiselmer");
-            default -> throw new IllegalArgumentException("Некорректный штат");
-        };
+
     }
-}
