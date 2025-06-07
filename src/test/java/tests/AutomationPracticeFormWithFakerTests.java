@@ -2,6 +2,7 @@ package tests;
 
 import static tests.TestData.*;
 import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 import pages.RegistrationPage;
 import pages.components.SubmitTableComponent;
@@ -13,6 +14,8 @@ public class AutomationPracticeFormWithFakerTests extends TestBase {
     SubmitTableComponent submitTableComponent = new SubmitTableComponent();
 
     @Test
+    @Tag("smoke")
+    @Tag("positive")
     @DisplayName("Позитивный все поля")
 
     public void allFildsOfFormTest(){
@@ -44,6 +47,8 @@ public class AutomationPracticeFormWithFakerTests extends TestBase {
     }
 
     @Test
+    @Tag("smoke")
+    @Tag("positive")
     @DisplayName("Позитивный обязательные поля")
     public void minFildsOfFormTest() {
         registrationPage.openPage()
@@ -61,6 +66,8 @@ public class AutomationPracticeFormWithFakerTests extends TestBase {
     }
 
     @Test
+    @Tag("smoke")
+    @Tag("negative")
     @DisplayName("Нет номера телефона")
     public void noNumberFildsOfFormTest() {
         registrationPage.openPage()
