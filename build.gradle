@@ -29,7 +29,8 @@ dependencies {
             "org.junit.jupiter:junit-jupiter:5.12.1",
             'org.slf4j:slf4j-simple:2.0.17',
             'com.github.javafaker:javafaker:1.0.2',
-            "io.qameta.allure:allure-junit4:2.25.0"
+            "io.qameta.allure:allure-junit4:2.25.0",
+            "io.qameta.allure:allure-selenide:2.25.0",
     )
     testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
 }
