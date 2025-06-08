@@ -62,3 +62,8 @@ task positive_tests(type: Test){
         includeTags("positive")
     }
 }
+task positiveFull_tests(type: Test){
+    useJUnitPlatform{
+        includeTags("positiveFull")
+    }
+}
