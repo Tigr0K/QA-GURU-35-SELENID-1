@@ -12,7 +12,7 @@ import org.openqa.selenium.remote.DesiredCapabilities;
 
 public class TestBase {
     @BeforeEach
-    static void beforeEach() {
+    void beforeEach() {
         SelenideLogger.addListener("AllureSelenide", new AllureSelenide());
     }
     @BeforeAll
